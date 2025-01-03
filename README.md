@@ -1,41 +1,56 @@
-# Bulk Document Generator (VBA)
+# Bulk Document Generator - VBA Project
 
-## Description
-A VBA-powered bulk document generator for automating the creation of personalized documents such as certificates, contracts, or letters. This tool merges data from an Excel sheet into a predefined Word template, significantly reducing the time and effort involved in generating repetitive documents. Ideal for corporate environments where document creation is a frequent task.
+This is a VBA project for generating bulk documents by using a template and populating it with data from a spreadsheet.
 
-## Features
-- Integrates with Microsoft Word and Excel
-- Automatically fills placeholders in Word template with data from Excel
-- Saves each generated document with a unique name
-- Customizable for various document templates
+## Files
+1. **Data Sheet**: `datasheet.xlsx`
+   - The source data for generating the documents. This Excel sheet contains the information that will replace placeholders in the Word template.
+   
+2. **Template**: `sampleTemplate.docx`
+   - A sample Word template where placeholders are defined. The placeholders will be replaced by the data from the Excel sheet.
 
-## Prerequisites
-Before using this project, ensure that you have the following:
-- **Microsoft Excel and Word** installed on your machine.
-- **Basic knowledge of VBA** for modification and customizations.
-- **Access to Excel Data** with necessary information (like names, project names, etc.) in structured columns.
+3. **VBA Code**: `BulkDocumentGenerator.bas`
+   - This is the VBA code file that handles the bulk document generation. It takes the data from the Excel file and uses the template to create new documents.
 
-## Setup & Instructions
+4. **Generated Sample Documents**:
+   - After running the code, three sample documents will be generated based on the data in `datasheet.xlsx` and the structure in `sampleTemplate.docx`. These files demonstrate how the final output will look.
 
-### 1. Download and Open the Project Files
-- Clone the repository or download the ZIP file containing the project files.
-- Open the `BulkDocumentGenerator.xlsm` file in Microsoft Excel. This file contains the VBA code that automates the process.
+## How It Works
+The VBA code takes data from the `datasheet.xlsx`, opens the template document `sampleTemplate.docx`, and replaces the placeholders in the Word template with the data in the Excel file. The resulting documents are saved with new names based on the data from the Excel sheet.
 
-### 2. Modify the Excel Sheet
-The Excel sheet should have the following column headers:
-- **Name**: Name of the person the document will be generated for.
-- **Project Name**: The name of the project associated with the document.
-- **Date**: Date of the document creation or award.
+1. **Data Sheet**: The Excel sheet must have columns with relevant data, such as names, dates, project names, etc. Each row contains information for generating one document.
+   
+2. **Template**: In the Word template, placeholders are in the format `<Placeholder>`. The VBA code will search for these placeholders and replace them with actual data from the Excel file.
 
-Example Data:
-| Name          | Date       | Contract ID | Project Name   |
-|---------------|------------|-------------|----------------|
-| John Doe      | 05/01/2025 | 1234        | Marketing Campaign |
-| Jane Smith    | 10/02/2025 | 5678        | Website Development |
+3. **Output**: After the macro is executed, new Word files are saved in the working directory with unique names based on the content of the Excel sheet.
 
-Ensure your data is filled in correctly under these columns.
+## How to Use
 
-### 3. Open and Configure the Word Template
-The VBA code will reference a **Word document template** (e.g., `Template.docx`) where placeholders like `<Name>`, `<Project Name>`, and `<Date>` will be replaced by data from the Excel sheet.
+1. **Prepare Data**: Make sure `datasheet.xlsx` is populated with the relevant information. The first row contains the headers (placeholders to match in the template).
 
-Ensure that your template is set up correctly with placeholders in the format:
+2. **Prepare Template**: Edit `sampleTemplate.docx` to include placeholders in the format `<Placeholder>`. Ensure the placeholders match the column headers in the Excel sheet.
+
+3. **Run the VBA Code**:
+   - Open the Excel workbook that contains the data sheet.
+   - Press `Alt + F11` to open the VBA editor.
+   - Import the `BulkDocumentGenerator.bas` code.
+   - Run the macro from the VBA editor.
+
+4. **Output Files**: The VBA code will generate documents based on the template and save them in the project folder.
+
+## Example Output
+
+- `GeneratedDocument_JohnDoe_1.docx`
+- `GeneratedDocument_JaneSmith_2.docx`
+- `GeneratedDocument_MichaelJohnson_3.docx`
+
+These files are based on the data in `datasheet.xlsx`.
+
+## Requirements
+
+- Microsoft Excel
+- Microsoft Word
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
